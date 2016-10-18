@@ -58,7 +58,7 @@ Enter `Stringly.Typed`.
 
 ## Getting Started
 
-> **Note:** You can see NUnit tests demonstrating features in the "[Samples](https://github.com/mission202/Stringly.Typed/blob/proto/tests/StringlyTyped.Tests/Samples.cs)".
+> **Note:** You can see NUnit tests demonstrating features in the "[Samples](https://github.com/mission202/Stringly.Typed/blob/master/tests/StringlyTyped.Tests/Samples.cs)".
 
 ### Simple Primitive Conversion
 
