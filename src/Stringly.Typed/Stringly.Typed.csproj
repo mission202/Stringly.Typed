@@ -45,7 +45,6 @@
     <Compile Include="IStringlyTypeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionBasedTypeConverter.cs" />
-    <Compile Include="RegexMismatchException.cs" />
     <Compile Include="Stringly.cs" />
     <Compile Include="ImplementedTypeConverter.cs" />
     <Compile Include="StringlyPattern.cs" />
