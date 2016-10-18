@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Rob Cooper</authors>
+    <owners>robcthegeek</owners>
+    <licenseUrl>https://github.com/mission202/Stringly.Typed/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mission202/Stringly.Typed</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Making it easier to remove "Stringly Typed" smelly code from your projects.</summary>
+    <description>Provides base classes to automagically parse concrete types (and primitives) to/from a string. Custom types can easily be created to validate the given string against a regular expression, so you know the string is "correct".</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Strings Refactoring Clean-Code</tags>
+  </metadata>
+</package>
