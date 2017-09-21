@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace StringlyTyped
 {
@@ -6,7 +7,7 @@ namespace StringlyTyped
     {
         public bool TryParse(string value, out T result)
         {
-            var ctor = typeof(T).GetConstructor(Type.EmptyTypes);
+            var ctor = typeof(T).GetTypeInfo().GetConstructor(Type.EmptyTypes);
 
             if (ctor == null)
                 throw new ArgumentException("Type must have a default paramless constructor.");

@@ -1,55 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C768C136-DDC5-4521-B44C-A299A0EC802E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StringlyTyped</RootNamespace>
-    <AssemblyName>Stringly.Typed</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+    <TargetFrameworks>net461;net47;netstandard1.6</TargetFrameworks>
+    <PackageId>Stringly.Typed</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>robcthegeek</Authors>
+    <Company>mission202</Company>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mission202/Stringly.Typed/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mission202/Stringly.Typed</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mission202/Stringly.Typed.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Provides base classes to automagically parse concrete types (and primitives) to/from a string. Custom types can easily be created to validate the given string against a regular expression, so you know the string is "correct".</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Updated to target net461, net47 and netstandard1.6.</PackageReleaseNotes>
+    <Copyright>Copyright 2017 (c) mission202 Ltd.</Copyright>
+    <PackageTags>strings refactoring clean-code</PackageTags>
+</PropertyGroup>
+
   <ItemGroup>
+    <None Remove="Stringly.Typed.v2.ncrunchproject" />
+    <None Remove="Stringly.Typed.v2.ncrunchsolution" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard1.6' ">
+    <Reference Include="System.Collections.Concurrent" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Reflection" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ExceptionFactory.cs" />
-    <Compile Include="InternalInterfacesTypeConverter.cs" />
-    <Compile Include="IStringlyTypeConverter.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReflectionBasedTypeConverter.cs" />
-    <Compile Include="Stringly.cs" />
-    <Compile Include="ImplementedTypeConverter.cs" />
-    <Compile Include="StringlyPattern.cs" />
-    <Compile Include="StringlyTypeConverter.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
