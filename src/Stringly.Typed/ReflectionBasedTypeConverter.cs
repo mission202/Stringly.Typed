@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace StringlyTyped
 {
@@ -17,7 +18,7 @@ namespace StringlyTyped
             {
                 result = default(T);
 
-                var method = _type.GetMethod(
+                var method = _type.GetTypeInfo().GetMethod(
                 "TryParse",
                 new[] { typeof(string), typeof(T).MakeByRefType() });
 

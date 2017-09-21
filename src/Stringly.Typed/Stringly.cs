@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace StringlyTyped
 {
@@ -35,10 +36,10 @@ namespace StringlyTyped
             var target = typeof(T);
             IStringlyTypeConverter<T> converter = null;
 
-            if (typeof(Stringly).IsAssignableFrom(target))
+            if (typeof(Stringly).GetTypeInfo().IsAssignableFrom(target))
                 converter = new StringlyTypeConverter<T>();
 
-            if (typeof(IStringlyTypeConverter<T>).IsAssignableFrom(target))
+            if (typeof(IStringlyTypeConverter<T>).GetTypeInfo().IsAssignableFrom(target))
                 converter = new ImplementedTypeConverter<T>();
 
             if (converter == null)

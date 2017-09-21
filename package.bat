@@ -1,1 +1,3 @@
-src\Stringly.Typed\packages\NuGet.CommandLine.3.4.3\tools\NuGet pack src\Stringly.Typed\Stringly.Typed.csproj -build -properties Configuration=Release
+REM This MUST be run from the VS Developer Command Prompt
+REM Packages in Release mode and drops in the current folder.
+msbuild /t:pack /p:Configuration=Release,PackageOutputPath=..\..\. src\Stringly.Typed\Stringly.Typed.csproj
