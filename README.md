@@ -77,13 +77,13 @@ Let's say we have a service method that actually wants a `Int32`:
 public void Method(Stringly<int> id) {
     // No validation/guard clauses required.
     // Repository expects (and gets) a Int32.
-    var data = respository.Get(guid);
+    var data = respository.Get(id);
 }
 
 // Meanwhile...
 service.Method("123"); // Works
 service.Method(123); // Works
-service.Method("im-not-a-guid"); // throws ArgumentOutOfRangeException
+service.Method("im-not-a-int"); // throws ArgumentOutOfRangeException
 ```
 
 ### Simple Regular Expression Matching
@@ -148,12 +148,18 @@ There you have it! Now do the right thing! Define custom types and only use the 
 ## Coming Soon
 
 
-### Nice Constructors for Complex Types
+### Better Support for Complex Types
 
 I'd like to make the complex types work with sensible constructors, and still do all the "right stuff" - for example:
 
 ```cs
 x.Method(new TableStorageKey("pk:rk"));
+```
+
+In addition, it would be nice to not have to use `new Stringly<ComplexType>("value")`, I'd rather do:
+
+```cs
+x.Method("value"));
 ```
 
 ### `NotNullOrWhiteSpaceString`
