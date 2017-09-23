@@ -127,6 +127,13 @@ public class TableStorageKey : StringlyPattern<TableStorageKey>
             RowKey = match.Groups["rowKey"].Value
         };
     }
+
+    // Enable implicit conversion
+    public static implicit operator TableStorageKey(string value)
+    {
+        // Helper method from the StringlyPattern base class.
+        return Parse(value);
+    }
 }
 
 // My caller (e.g. Controller, Worker Role etc) now doesn't have to work hard to parse strings.
@@ -136,39 +143,9 @@ public void Method(TableStorageKey key) {
 }
 
 // No problem! I can do that!
-x.Method(new Stringly<TableStorageKey>("pk:rk")); // Works
-x.Method(new Stringly<TableStorageKey>("usa:totalSearches")); // Works
-x.Method(new Stringly<TableStorageKey>("not-a-key")); // ArgumentOutOfRangeException
+x.Method("pk:rk"); // Works
+x.Method("usa:totalSearches"); // Works
+x.Method("not-a-key"); // ArgumentOutOfRangeException
 ```
 
 There you have it! Now do the right thing! Define custom types and only use the _concrete_ types in future, you've no excuse! :smile:
-
-****
-
-## Coming Soon
-
-
-### Better Support for Complex Types
-
-I'd like to make the complex types work with sensible constructors, and still do all the "right stuff" - for example:
-
-```cs
-x.Method(new TableStorageKey("pk:rk"));
-```
-
-In addition, it would be nice to not have to use `new Stringly<ComplexType>("value")`, I'd rather do:
-
-```cs
-x.Method("value"));
-```
-
-### `NotNullOrWhiteSpaceString`
-
-... because how sick are you of seeing:
-
-```cs
-if (string.IsNullOrWhiteSpace(value))
-    throw new ArgumentException(nameof(value), $"'{nameof(value)}' cannot be null or white space.")
-```
-
-? :smile:
