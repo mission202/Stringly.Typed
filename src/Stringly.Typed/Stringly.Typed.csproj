@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net461;net47;netstandard1.6</TargetFrameworks>
     <PackageId>Stringly.Typed</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>robcthegeek</Authors>
     <Company>mission202</Company>
     <PackageLicenseUrl>https://raw.githubusercontent.com/mission202/Stringly.Typed/master/LICENSE</PackageLicenseUrl>
