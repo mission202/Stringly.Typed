@@ -61,6 +61,19 @@ namespace StringlyTyped.Tests
         }
 
         [Test]
+        public void StaticParse_MatchingValue_ReturnsParsedValue()
+        {
+            Assert.True(Stringly<bool>.Parse("true"));
+        }
+
+        [Test]
+        public void StaticParse_NonMatchingValue_ThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => Stringly<bool>.Parse("woops"));
+        }
+
+        [Test]
         public void MethodWithStringlyTypedInt_IntAsString_ReturnsIntValue()
         {
             var result = Increment("1");

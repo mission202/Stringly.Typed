@@ -22,5 +22,10 @@ namespace StringlyTyped
             result = default(T);
             return false;
         }
+
+        public static T Parse(string value)
+        {
+            return Stringly<T>.Parse(value);
+        }
     }
 }

@@ -83,5 +83,10 @@ namespace StringlyTyped
         {
             return Value;
         }
+
+        public static T Parse(string value)
+        {
+            return new Stringly<T>(value);
+        }
     }
 }

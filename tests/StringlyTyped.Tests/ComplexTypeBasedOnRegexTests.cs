@@ -23,6 +23,21 @@ namespace StringlyTyped.Tests
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => new Stringly<DigitsOnly>("word"));
         }
+
+        [Test]
+        public void Implicit_MatchingValue_SetsValue()
+        {
+            DigitsOnly value = "0000";
+
+            Assert.That(value.Digits.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void Implicit_NonMatchingValue_ThrowsArgumentOutOfRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => { DigitsOnly value = "woops"; });
+        }
     }
 
     internal class DigitsOnly : StringlyPattern<DigitsOnly>
@@ -38,6 +53,11 @@ namespace StringlyTyped.Tests
                 .ToList();
 
             return new DigitsOnly { Digits = digits };
+        }
+
+        public static implicit operator DigitsOnly(string value)
+        {
+            return Parse(value);
         }
     }
 }
