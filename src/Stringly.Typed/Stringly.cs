@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace StringlyTyped
@@ -41,6 +42,11 @@ namespace StringlyTyped
 
             if (typeof(IStringlyTypeConverter<T>).GetTypeInfo().IsAssignableFrom(target))
                 converter = new ImplementedTypeConverter<T>();
+
+            // Uri is a funny one - has 'TryCreate' instead of regular 'TryParse'.
+            // https://docs.microsoft.com/en-us/dotnet/api/system.uri.trycreate
+            if (target == typeof(Uri))
+                converter = new UriTryCreateConverter() as IStringlyTypeConverter<T>;
 
             if (converter == null)
                 converter = new ReflectionBasedTypeConverter<T>();

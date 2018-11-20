@@ -24,6 +24,24 @@ namespace StringlyTyped.Tests
         }
 
         [Test]
+        public void Ctor_ValueIsUri_SetsValue()
+        {
+            string expected = "http://www.nyan.cat/";
+            var uri = new Uri(expected);
+
+            var value = new Stringly<Uri>(expected).Result;
+
+            Assert.That(value, Is.EqualTo(uri));
+        }
+
+        [Test]
+        public void Ctor_ValueIsntAbsoluteUri_ThrowsArgumentOutofRangeException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => new Stringly<Uri>("not-an-absolute-uri"));
+        }
+
+        [Test]
         public void Ctor_ValueIsInt_SetsValue()
         {
             var expected = 42.ToString();

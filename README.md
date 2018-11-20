@@ -7,7 +7,7 @@
 `String` is everywhere - often being a top-level input to most pieces of code.
 
 - User input.
-- JSON data.
+- JSON data (e.g. configuration files).
 - QueryString values.
 - Database records/documents.
 - Console input.
@@ -60,7 +60,8 @@ Enter `Stringly.Typed`.
 
 `Stringly.Typed` made of a few parts:
 
-1. OOTB support for `Stringly<T>`, working with anything that has a `TryParse` method (e.g. primitives, `Guid`, `DateTime`, `IPAddress` - [knock yourself out](https://www.google.co.uk/search?q=.net+tryparse+site%3Ahttps%3A%2F%2Fmsdn.microsoft.com%2Fen-us)).
+1. Support for `Stringly<T>`, working with anything that has a `TryParse` method (e.g. primitives, `Guid`, `DateTime`, `IPAddress` - [knock yourself out](https://www.google.co.uk/search?q=.net+tryparse+site%3Ahttps%3A%2F%2Fmsdn.microsoft.com%2Fen-us)).
+1. Support for `Stringly<Uri>`, parsing absolute `Uri`'s (e.g. from configuration files).
 1. A generic type (`Stringly<T>`) that implements `implicit` operators so you can seamlessly move to/from `String`.
 1. A base class that enables quick `Regex` matching.
 1. A non-generic `Stringly` base class to make it easy to define "just a string that conforms to a specific format".
@@ -84,6 +85,20 @@ public void Method(Stringly<int> id) {
 service.Method("123"); // Works
 service.Method(123); // Works
 service.Method("im-not-a-int"); // throws ArgumentOutOfRangeException
+```
+
+### (Absolute) URI Parsing
+
+```cs
+public void OutputHost(Stringly<Uri> uri) {
+    Console.WriteLine(uri.Result.Host); // 'Result' is a Uri
+}
+
+// Both of these naturally work - outputting 'nyan.cat'
+OutputHost("http://nyan.cat");
+OutputHost(new Uri("http://nyan.cat"));
+
+OutputHost("nyan"); // ArgumentOutOfRangeException - Not an absolute URI.
 ```
 
 ### Simple Regular Expression Matching
