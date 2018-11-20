@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net461;net47;netstandard1.6</TargetFrameworks>
     <PackageId>Stringly.Typed</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
     <Authors>robcthegeek</Authors>
     <Company>mission202</Company>
     <PackageLicenseUrl>https://raw.githubusercontent.com/mission202/Stringly.Typed/master/LICENSE</PackageLicenseUrl>
@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <Description>Provides base classes to automagically parse concrete types (and primitives) to/from a string. Custom types can easily be created to validate the given string against a regular expression, so you know the string is "correct".</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Updated to target net461, net47 and netstandard1.6.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for absolute URIs.</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) mission202 Ltd.</Copyright>
     <PackageTags>strings refactoring clean-code</PackageTags>
 </PropertyGroup>
